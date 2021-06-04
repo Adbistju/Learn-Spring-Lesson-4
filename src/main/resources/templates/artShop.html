@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"/>
+    <title>ArtShop PlagueBrush</title>
+
+    <style type="text/css">
+        .ads{
+            border: 4px double black;
+            padding: 10px;
+            border-radius: 25px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container ads">
+    <div class="row py-2">
+        <div class="col-12">
+            <a class="btn btn-primary" href="artshop/createProduct">Add product</a>
+        </div>
+
+        <div class="col-12">
+            <table class="table table-bordered my-2">
+                <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Price($)</th>
+                    <th scope="col">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="product : ${product}" >
+                    <th th:text="${product.id}" scope="row">1</th>
+                    <td th:text="${product.title}">Synthetic brush</td>
+                    <td th:text="${product.category}">Brushes</td>
+                    <td th:text="${product.price}">1$</td>
+                    <td>
+                        <a class="btn btn-success" th:href="@{/artshop/{id}(id = ${product.id})}"><i class="fas fa-edit"></i></a>
+                        <a class="btn btn-danger" th:href="@{/artshop/delete/{id}(id = ${product.id})}"><i class="far fa-trash-alt"></i></a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>
